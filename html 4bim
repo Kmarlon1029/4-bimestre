@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Livros</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Catálogo de Livros</h1>
+        <div class="categories">
+            <button onclick="showBooks('ficcao')">Ficção</button>
+            <button onclick="showBooks('naoFiccao')">Não Ficção</button>
+            <button onclick="showBooks('fantasia')">Fantasia</button>
+            <button onclick="showBooks('biografia')">Biografia</button>
+        </div>
+        <div id="bookDetails" class="book-details">
+            <h2>Selecione uma categoria para ver os livros</h2>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
