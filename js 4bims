@@ -1,0 +1,16 @@
+document.getElementById('contatoForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Mensagem enviada com sucesso!');
+    this.reset();
+});
+
+// Smooth scroll
+const links = document.querySelectorAll('nav ul li a');
+for (const link of links) {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+    });
+}
