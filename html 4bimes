@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio Colorido</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Meu Portfólio</h1>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="sobre">
+        <h2>Sobre Mim</h2>
+        <p>Sou um desenvolvedor web apaixonado por criar experiências incríveis. Vamos juntos transformar ideias em realidade!</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>Meu Trabalho</h2>
+        <div class="galeria">
+            <div class="item"><img src="https://jamboeditora.com.br/wp-content/uploads/2024/05/FF-29_Capa-Site01.png?x92632" alt="Projeto 1"></div>
+            <h2>Segredos de Salamonis</h2>
+        <p>Um jogo de aventura que combina elementos de exploração e quebra-cabeças. Os jogadores assumem o papel de um personagem que deve descobrir os mistérios de Salamonis, uma cidade antiga cheia de segredos. O enredo envolve interações com NPCs, coleta de itens e resolução de enigmas para desvendar a história da cidade e seus habitantes.</p>
+    </div>
+            <div class="item"><img src="https://jamboeditora.com.br/wp-content/uploads/2024/08/Pagina_Produto_Capa-Lobo_Solitario4-1.png?x92632" alt="Projeto 2"></div>
+            <h2>O Abismo da Perdição</h2>
+        <p>Um jogo de RPG de ação em que os jogadores exploram um mundo sombrio e hostil. A narrativa gira em torno de uma jornada épica para salvar o mundo de uma força maligna emergente do abismo. Os jogadores enfrentam desafios, lutam contra criaturas poderosas e devem tomar decisões que influenciam o desenrolar da história. O jogo é conhecido por suas mecânicas de combate dinâmicas e um enredo envolvente.</p>
+    </div>
+            <div class="item"><img src="https://jamboeditora.com.br/wp-content/uploads/2024/07/CAPA-DRACULA.png?x92632" alt="Projeto 3"></div>
+            <h2>Drácula</h2>
+            <p>Baseado na obra clássica de Bram Stoker, este jogo de aventura e horror leva os jogadores a uma jornada sombria para enfrentar o famoso vampiro. Os jogadores exploram locais icônicos da história, coletam itens e resolvem quebra-cabeças para derrotar Drácula e salvar suas vítimas. O jogo combina elementos de narrativa com atmosferas tensas e decisões que afetam o final da história.</p>
+        </div>
+            <div class="item"><img scr="https://jamboeditora.com.br/wp-content/uploads/2024/08/Capa-Magia.png?x92632"
+        </div>
+    </section>
+      <img src="https://upload.wikimedia.org/wikipedia/pt/2/26/Logotipo_de_FNAF_1.jpg" 
+    <section id="contato">
+        <h2>Contato</h2>
+        <form id="contatoForm">
+            <input type="text" placeholder="Seu Nome" required>
+            <input type="email" placeholder="Seu Email" required>
+            <textarea placeholder="Sua Mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Meu Portfólio. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
