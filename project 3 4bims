@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Livros Clássicos</title>
+    <style>
+        /* Estilos gerais da página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .quiz-container {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 500px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .options button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 10px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        .options button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .next-btn {
+            background-color: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .next-btn:hover {
+            background-color: #ff5722;
+        }
+
+        /* Estilos de transição para as perguntas */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>Quiz de Livros Clássicos</h1>
+        <p>Teste seus conhecimentos sobre livros famosos!</p>
+
+        <!-- Pergunta e Opções -->
+        <div id="quiz">
+            <div id="question-container">
+                <p id="question" class="question">Qual é o autor de 'Orgulho e Preconceito'?</p>
+                <div id="options" class="options">
+                    <button data-answer="A">A) Jane Austen</button>
+                    <button data-answer="B">B) Charles Dickens</button>
+                    <button data-answer="C">C) William Shakespeare</button>
+                    <button data-answer="D">D) Edgar Allan Poe</button>
+                </div>
+            </div>
+
+            <!-- Resultado -->
+            <div id="result-container" class="hidden">
+                <p id="result-message" class="result"></p>
+                <button id="next-question-btn" class="next-btn">Próxima Pergunta</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Definindo as perguntas e respostas
+        const questions = [
+            {
+                question: "Qual é o autor de 'Orgulho e Preconceito'?",
+                options: ["Jane Austen", "Charles Dickens", "William Shakespeare", "Edgar Allan Poe"],
+                correctAnswer: "A",
+                message: "Parabéns! Você conhece bem os clássicos da literatura!"
+            },
+            {
+                question: "Quem escreveu 'Moby Dick'?",
+                options: ["Herman Melville", "Mark Twain", "Jules Verne", "Victor Hugo"],
+                correctAnswer: "A",
+                message: "Excelente! Moby Dick é uma obra fascinante!"
+            },
+            {
+                question: "Qual autor escreveu 'Os Miseráveis'?",
+                options: ["Charles Dickens", "Victor Hugo", "Leo Tolstoy", "H.G. Wells"],
+                correctAnswer: "B",
+                message: "Você está arrasando! 'Os Miseráveis' é um clássico!"
+            },
+            {
+                question: "Quem é o autor de 'Dom Quixote'?",
+                options: ["Miguel de Cervantes", "Gustave Flaubert", "Henry James", "Emile Zola"],
+                correctAnswer: "A",
+                message: "Incrível! 'Dom Quixote' é um marco na literatura!"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        // Carregar a pergunta
+        function loadQuestion() {
+            const questionData = questions[currentQuestionIndex];
+            document.getElementById('question').textContent = questionData.question;
+
+            const options = document.getElementById('options');
+            options.innerHTML = '';
+            
+            questionData.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = `${String.fromCharCode(65 + index)}) ${option}`;
+                button.classList.add('option');
+                button.setAttribute('data-answer', String.fromCharCode(65 + index));
+                options.appendChild(button);
+            });
+
+            // Adicionar evento de clique nas opções
+            const optionButtons = document.querySelectorAll('.option');
+            optionButtons.forEach(button => {
+                button.addEventListener('click', handleAnswer);
+            });
+        }
+
+        // Função para tratar as respostas
+        function handleAnswer(event) {
+            const selectedAnswer = event.target.getAttribute('data-answer');
+            const questionData = questions[currentQuestionIndex];
+
+            document.getElementById('question-container').classList.add('hidden');
+            document.getElementById('result-container').classList.remove('hidden');
+
+            const resultMessage = document.getElementById('result-message');
+            if (selectedAnswer === questionData.correctAnswer) {
+                resultMessage.textContent = `Correto! ${questionData.message}`;
+            } else {
+                resultMessage.textContent = `Errado! A resposta correta é ${questionData.correctAnswer}.`;
+            }
+        }
+
+        // Função para ir para a próxima pergunta ou reiniciar o quiz
+        document.getElementById('next-question-btn').addEventListener('click', function() {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                document.getElementById('result-container').classList.add('hidden');
+                document.getElementById('question-container').classList.remove('hidden');
+                loadQuestion();
+            } else {
+                document.getElementById('result-message').textContent = "Você completou o quiz! Parabéns!";
+                document.getElementById('next-question-btn').textContent = "Recomeçar";
+                currentQuestionIndex = 0; // Reiniciar o quiz
+            }
+        });
+
+        // Inicializar a primeira pergunta
+        loadQuestion();
+    </script>
+
+</body>
+</html>
